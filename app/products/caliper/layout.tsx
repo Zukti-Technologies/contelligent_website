@@ -6,7 +6,7 @@ export default function CaliperLayout({ children }: { children: React.ReactNode 
   // .theme-caliper switches the colour tokens to Caliper teal + mint for every page under /products/caliper.
   return (
     <div className="theme-caliper bg-white text-ink-800">
-      <SubNav title="Caliper" base="/products/caliper/" items={data.subnav} actions={data.subnavActions ?? []} />
+      <SubNav title="Caliper" logo="/images/caliper-logo.svg" base="/products/caliper/" items={data.subnav} actions={data.subnavActions ?? []} />
       {children}
     </div>
   );
