@@ -22,7 +22,7 @@ name:
   eyebrow: "Our Principles"
   title: "Two principles behind everything we build"
   items:
-    - heading: "Consistently"
+    - heading: "Consistent"
       icon: "refresh"
       body: "Accurate, reliable and timely financial information. Whether it is refreshing dashboards every 30 minutes, automating routine financial processes or delivering business-critical reports on schedule, decision-makers should always have information they can trust."
     - heading: "Intelligent"
