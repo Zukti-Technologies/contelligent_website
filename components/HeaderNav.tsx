@@ -72,9 +72,9 @@ export default function HeaderNav({ items, ctas }: { items: NavItem[]; ctas: Nav
                     {item.columns.map((col, ci) => (
                       <div key={col.title} className={`p-2 ${ci > 0 ? "border-l border-ink-100 pl-4" : ""}`}>
                         {col.href ? (
-                          <SmartLink href={col.href} className="mb-2 block px-2 text-xs font-semibold uppercase tracking-[0.14em] text-ink-300 hover:text-mint-700">{col.title}</SmartLink>
+                          <SmartLink href={col.href} className="mb-2 block px-2 text-xs font-semibold uppercase tracking-[0.14em] text-ink-600 hover:text-mint-700">{col.title}</SmartLink>
                         ) : (
-                          <p className="mb-2 px-2 text-xs font-semibold uppercase tracking-[0.14em] text-ink-300">{col.title}</p>
+                          <p className="mb-2 px-2 text-xs font-semibold uppercase tracking-[0.14em] text-ink-600">{col.title}</p>
                         )}
                         <ul className="space-y-0.5">
                           {col.links.map((l) => (
@@ -98,7 +98,7 @@ export default function HeaderNav({ items, ctas }: { items: NavItem[]; ctas: Nav
                 <div id={menuId} className="absolute left-1/2 top-full w-56 -translate-x-1/2 pt-2">
                   <div className="rounded-xl border border-ink-100 bg-white p-2 shadow-lg shadow-ink-900/5">
                     {item.href && (
-                      <SmartLink href={item.href} className="block rounded-lg px-3 py-2 text-xs font-semibold uppercase tracking-wider text-ink-300 hover:text-ink-700">
+                      <SmartLink href={item.href} className="block rounded-lg px-3 py-2 text-xs font-semibold uppercase tracking-wider text-ink-600 hover:text-ink-800">
                         All {item.label.toLowerCase()}
                       </SmartLink>
                     )}
@@ -125,7 +125,7 @@ export default function HeaderNav({ items, ctas }: { items: NavItem[]; ctas: Nav
         {mobile ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
       </button>
       {mobile && (
-        <div className="fixed inset-x-0 top-16 bottom-0 overflow-y-auto border-t border-ink-100 bg-white px-4 pb-10 pt-4 lg:hidden">
+        <div className="fixed inset-x-0 top-[72px] bottom-0 overflow-y-auto border-t border-ink-100 bg-white px-4 pb-10 pt-4 lg:hidden">
           <nav aria-label="Mobile" className="flex flex-col">
             {items.map((item) => (
               <div key={item.label} className="border-b border-ink-100 py-2">
@@ -137,9 +137,9 @@ export default function HeaderNav({ items, ctas }: { items: NavItem[]; ctas: Nav
                 {item.columns?.map((col) => (
                   <div key={col.title} className="mb-2 pl-4">
                     {col.href ? (
-                      <SmartLink href={col.href} className="block py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-ink-300">{col.title}</SmartLink>
+                      <SmartLink href={col.href} className="block py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-ink-600">{col.title}</SmartLink>
                     ) : (
-                      <p className="py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-ink-300">{col.title}</p>
+                      <p className="py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-ink-600">{col.title}</p>
                     )}
                     {col.links.map((l) => (
                       <SmartLink key={l.href} href={l.href} external={l.external} className="block py-1.5 pl-2 text-sm text-ink-700">{l.label}</SmartLink>

@@ -2,22 +2,23 @@ import SmartLink from "./SmartLink";
 
 type Cta = { label: string; href: string; external?: boolean };
 
-/** Dark hero band used at the top of every page. */
+/** Dark hero band used at the top of every page.
+ *  `serif` sets the title in the display serif (DM Serif Display on Contelligent pages). */
 export default function PageHero({
-  eyebrow, title, subtitle, primaryCta, secondaryCta, size = "md", children,
+  eyebrow, title, subtitle, primaryCta, secondaryCta, size = "md", serif = false, children,
 }: {
   eyebrow?: string; title: string; subtitle?: string; primaryCta?: Cta; secondaryCta?: Cta;
-  size?: "md" | "lg"; children?: React.ReactNode;
+  size?: "md" | "lg"; serif?: boolean; children?: React.ReactNode;
 }) {
   return (
     <section className="relative overflow-hidden bg-ink-900 text-white">
       <div className="absolute inset-0 grid-faint" aria-hidden="true" />
-      <div className="absolute -right-40 -top-40 h-[28rem] w-[28rem] rounded-full bg-mint-500/10 blur-3xl" aria-hidden="true" />
+      <div className="hero-glow absolute -right-40 -top-40 h-[28rem] w-[28rem] rounded-full bg-mint-500/10 blur-3xl" aria-hidden="true" />
       <div className={`container-site relative ${size === "lg" ? "py-20 sm:py-28" : "py-14 sm:py-20"}`}>
         <div className={children ? "grid items-center gap-12 lg:grid-cols-[1.05fr_1fr]" : ""}>
           <div className="max-w-3xl">
             {eyebrow && <p className="eyebrow text-mint-300">{eyebrow}</p>}
-            <h1 className={`mt-4 font-bold text-white ${size === "lg" ? "text-4xl sm:text-5xl lg:text-6xl" : "text-4xl sm:text-5xl"}`}>{title}</h1>
+            <h1 className={`mt-4 text-white ${serif ? "font-serif font-normal tracking-normal" : "font-bold"} ${size === "lg" ? "text-4xl sm:text-5xl lg:text-6xl" : "text-4xl sm:text-5xl"}`}>{title}</h1>
             {subtitle && <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-100">{subtitle}</p>}
             {(primaryCta || secondaryCta) && (
               <div className="mt-8 flex flex-wrap gap-3">

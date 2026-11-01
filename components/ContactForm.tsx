@@ -29,7 +29,7 @@ export default function ContactForm({ to, labels, submit, note, subjectPrefix }:
     setOpened(true);
   }
 
-  const input = "mt-1.5 block w-full rounded-lg border border-ink-100 bg-white px-3.5 py-2.5 text-ink-800 placeholder:text-ink-300 focus:border-mint-500 focus:outline-none focus:ring-2 focus:ring-mint-500/30";
+  const input = "mt-1.5 block w-full rounded-lg border border-ink-100 bg-white px-3.5 py-2.5 text-ink-800 placeholder:text-ink-300 focus:border-mint-700 focus:outline-none focus:ring-2 focus:ring-mint-700/30";
   return (
     <form onSubmit={handleSubmit} noValidate className="space-y-5">
       <div className="grid gap-5 sm:grid-cols-2">

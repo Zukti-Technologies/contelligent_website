@@ -32,8 +32,11 @@ const config: Config = {
         paper: v("paper"),
       },
       fontFamily: {
-        sans: ['"Inter Variable"', "system-ui", "sans-serif"],
-        display: ['"Plus Jakarta Sans Variable"', '"Inter Variable"', "system-ui", "sans-serif"],
+        // Set per palette in app/globals.css: DM Sans / DM Serif Display on Contelligent pages,
+        // Inter / Plus Jakarta Sans on Caliper pages.
+        sans: ["var(--font-sans)"],
+        display: ["var(--font-display)"],
+        serif: ["var(--font-serif)"],
       },
       maxWidth: { site: "76rem" },
     },

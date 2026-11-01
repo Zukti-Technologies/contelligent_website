@@ -30,7 +30,7 @@ export default function HomePage() {
   const { data: d, html } = getPage<Home>("home");
   return (
     <>
-      <PageHero size="lg" {...d.hero} />
+      <PageHero size="lg" serif {...d.hero} />
 
       <section className="container-site grid gap-10 py-20 sm:py-24 lg:grid-cols-[1fr_1.3fr]">
         <SectionHeading eyebrow={d.about.eyebrow} title={d.about.title} />
@@ -44,7 +44,7 @@ export default function HomePage() {
             {d.name.items.map((it) => (
               <div key={it.heading} className="rounded-2xl border border-ink-100 bg-white p-8">
                 <div className="flex items-baseline gap-3">
-                  <h3 className="font-display text-4xl font-bold text-mint-700">{it.heading}</h3>
+                  <h3 className="font-serif text-4xl font-normal tracking-normal text-ink-800">{it.heading}</h3>
                   <Icon name={it.icon} className="h-5 w-5 text-ink-300" />
                 </div>
                 <p className="mt-4 leading-relaxed text-ink-600">{it.body}</p>
