@@ -3,7 +3,7 @@
 # CALIPER PRODUCT PAGE (/products/caliper)
 # Source: docs/Caliper by Contelligent.pdf (pitch deck, Oct 2026). Page numbers below refer to that deck.
 # Sections appear in this order:
-#   hero, trustedBy, problem, solution, features, screens, benefits, audiences,
+#   hero, trustedBy, problem, solution, serviceModel, features, screens, benefits, audiences,
 #   security, integrations, getStarted, FAQs (faqs.md), cta
 # Leave a section's `title` as "" to hide it.
 # ─────────────────────────────────────────────────────────────
@@ -12,6 +12,7 @@ seoDescription: "Caliper reads your Tally data and turns it into liquidity, reve
 
 # Sticky section bar under the header. `href` starting with # scrolls on this page.
 subnav:
+  - { label: "Service model", href: "#service-model" }
   - { label: "Features", href: "#features" }
   - { label: "Benefits", href: "#benefits" }
   - { label: "Security", href: "#security" }
@@ -73,6 +74,53 @@ solution:
     - "No new system"
     - "No migration"
     - "No disruption"
+
+# Source: Caliper_by_Contelligent_M.pdf, page 7 (Caliper service model).
+# Three layers shown left to right with arrows. `highlight: true` makes one card dark and raised
+# (the Caliper Platform card, as in the deck). `badge` is the letter in the circle.
+# `outcome` is the box at the bottom of each card. Leave `title` as "" to hide the section.
+serviceModel:
+  eyebrow: "Caliper service model"
+  title: "One Caliper offering. Three layers of financial intelligence."
+  intro: "A Financial Data Associate, the Caliper platform and expert advice work as one connected service, taking you from reliable data to better decisions."
+  layers:
+    - badge: "D"
+      title: "Caliper FDA"
+      subtitle: "Financial Data Associate"
+      layer: "Data layer"
+      points:
+        - "Works alongside your accounting and finance team"
+        - "Standardises classifications and structures"
+        - "Identifies anomalies and data-quality gaps"
+        - "Makes your financial data analysis-ready"
+      outcome: "Reliable, decision-ready data"
+    - badge: "C"
+      title: "Caliper Platform"
+      subtitle: "Financial intelligence technology"
+      layer: "Insight layer"
+      highlight: true
+      points:
+        - "Connects and organises your financial data"
+        - "Analyses liquidity, revenue, cost and profitability"
+        - "Surfaces trends, exceptions and key drivers"
+        - "Shows management what needs attention"
+      outcome: "Always-current insight"
+    - badge: "A"
+      title: "Caliper Advisor"
+      subtitle: "Expert finance and business advisory"
+      layer: "Advisory layer"
+      points:
+        - "Uses insights from the Caliper platform"
+        - "Interprets what the numbers mean for your business"
+        - "Identifies implications, risks and opportunities"
+        - "Recommends actions to management, alongside your CA"
+      outcome: "Better financial actions and decisions"
+  relationship:
+    label: "One Caliper relationship:"
+    steps:
+      - "Get the data right"
+      - "Know what it means"
+      - "Know what to do next"
 
 # Deck page 4. badge: shows a label on the card ("Coming soon", "Beta").
 features:

@@ -4,3 +4,6 @@ out/
 next-env.d.ts
 *.tsbuildinfo
 .DS_Store
+
+# Source decks (not for the public repo)
+Caliper_by_Contelligent_M.pdf

@@ -11,7 +11,7 @@ import { ScreenshotGallery, ScreenshotTrigger } from "@/components/ScreenshotGal
 import type { LightboxItem } from "@/components/Lightbox";
 import { metaFrom } from "@/lib/seo";
 import { Icon } from "@/lib/icons";
-import { ArrowRight, Check, X, CircleCheck } from "lucide-react";
+import { ArrowRight, Check, X, CircleCheck, ChevronRight } from "lucide-react";
 
 export const metadata = metaFrom("caliper/caliper", "/products/caliper/");
 
@@ -21,6 +21,11 @@ type CaliperData = {
   trustedBy: { title: string; logos: LogoItem[] };
   problem: { eyebrow: string; title: string; body: string; chain: string[] };
   solution: { eyebrow: string; title: string; body: string; flow: { title: string; caption: string; icon: string; highlight?: boolean }[]; promises: string[] };
+  serviceModel?: {
+    eyebrow: string; title: string; intro?: string;
+    layers: { badge: string; title: string; subtitle: string; layer: string; highlight?: boolean; points: string[]; outcome: string }[];
+    relationship?: { label: string; steps: string[] };
+  };
   features: { eyebrow: string; title: string; intro?: string; items: Feature[] };
   screens: { eyebrow: string; title: string; note?: string; items: { title: string; image: string; thumb?: string; alt: string }[] };
   benefits: { eyebrow: string; title: string; intro?: string; columns: { label: string; before: string; after: string }; rows: { label: string; before: string; after: string }[] };
@@ -127,8 +132,60 @@ export default function CaliperPage() {
         </section>
       )}
 
+      {/* Service model (Caliper_by_Contelligent_M.pdf p.7) */}
+      {d.serviceModel?.title && (
+        <section id="service-model" className="container-site py-20 sm:py-24">
+          <SectionHeading eyebrow={d.serviceModel.eyebrow} title={d.serviceModel.title} intro={d.serviceModel.intro} />
+          <div className="mt-12 grid items-stretch gap-4 lg:grid-cols-[1fr_auto_1fr_auto_1fr]">
+            {d.serviceModel.layers.map((l, i) => (
+              <div key={l.title} className="contents">
+                <article className={`flex flex-col rounded-2xl p-6 sm:p-7 ${l.highlight ? "bg-ink-800 text-white shadow-xl lg:-my-3 lg:py-10" : "border border-ink-100 bg-white"}`}>
+                  <div className="flex items-center gap-4 lg:min-h-[4.5rem]">
+                    <span className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-lg font-bold ${l.highlight ? "bg-white/15 text-white" : "bg-mint-50 text-mint-700"}`} aria-hidden="true">{l.badge}</span>
+                    <div>
+                      <h3 className={`text-xl font-semibold ${l.highlight ? "text-white" : ""}`}>{l.title}</h3>
+                      <p className={`text-sm ${l.highlight ? "text-ink-100" : "text-ink-600"}`}>{l.subtitle}</p>
+                    </div>
+                  </div>
+                  <p className={`mt-6 rounded-lg px-4 py-2 text-center text-xs font-semibold uppercase tracking-[0.14em] ${l.highlight ? "bg-white/15 text-white" : "bg-mint-50 text-mint-700"}`}>{l.layer}</p>
+                  <ul className="mb-8 mt-6 space-y-3 text-sm leading-relaxed">
+                    {l.points.map((p) => (
+                      <li key={p} className="flex gap-3">
+                        <span className={`mt-2 h-1.5 w-1.5 shrink-0 rounded-full ${l.highlight ? "bg-mint-300" : "bg-mint-500"}`} aria-hidden="true" />
+                        <span className={l.highlight ? "text-white/90" : "text-ink-700"}>{p}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <p className={`mt-auto rounded-lg px-4 py-3 text-center text-sm font-semibold ${l.highlight ? "bg-white text-mint-700" : "bg-mint-50 text-ink-800"}`}>
+                    <span className="sr-only">Outcome: </span>{l.outcome}
+                  </p>
+                </article>
+                {i < d.serviceModel!.layers.length - 1 && (
+                  <div className="flex items-center justify-center" aria-hidden="true">
+                    <ChevronRight className="h-10 w-10 rotate-90 text-mint-500 lg:rotate-0" strokeWidth={3} />
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+          {d.serviceModel.relationship && (
+            <div className="mt-8 flex flex-col items-center gap-2 rounded-2xl bg-mint-50 px-6 py-5 text-center font-semibold text-ink-800 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-3">
+              <span>{d.serviceModel.relationship.label}</span>
+              <ol className="flex flex-col items-center gap-2 sm:flex-row sm:gap-3">
+                {d.serviceModel.relationship.steps.map((s, i) => (
+                  <li key={s} className="flex items-center gap-3">
+                    {i > 0 && <ArrowRight className="hidden h-4 w-4 text-mint-700 sm:block" aria-hidden="true" />}
+                    {s}
+                  </li>
+                ))}
+              </ol>
+            </div>
+          )}
+        </section>
+      )}
+
       {/* Features (deck p.4) */}
-      <section id="features" className="container-site py-20 sm:py-24">
+      <section id="features" className={`container-site py-20 sm:py-24 ${d.serviceModel?.title ? "border-t border-ink-100" : ""}`}>
         <SectionHeading eyebrow={d.features.eyebrow} title={d.features.title} intro={d.features.intro} />
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {d.features.items.map((f, i) => <FeatureCard key={f.title} feature={f} index={i} />)}
