@@ -1,102 +1,123 @@
-import PageHero from "@/components/PageHero";
-import SectionHeading from "@/components/SectionHeading";
-import FeatureCard from "@/components/FeatureCard";
-import CTABanner from "@/components/CTABanner";
-import Prose from "@/components/Prose";
-import SmartLink from "@/components/SmartLink";
-import { getPage } from "@/lib/content";
+/* eslint-disable @next/next/no-img-element */
+import Link from "next/link";
+import { getPage, getSite } from "@/lib/content";
 import { metaFrom } from "@/lib/seo";
-import { Icon } from "@/lib/icons";
-import { Check } from "lucide-react";
+import { Cards, Head, Ticks } from "@/components/Blocks";
+import BrandLogo from "@/components/BrandLogo";
+import CtaBand from "@/components/CtaBand";
+import TourPlayer from "@/components/TourPlayer";
+import ServiceTabs from "@/components/ServiceTabs";
+import type { AccItem } from "@/components/Accordion";
 
 export const metadata = metaFrom("home", "/");
 
-type Cta = { label: string; href: string; external?: boolean };
+type Cta = { label: string; href: string };
 type Home = {
-  hero: { eyebrow: string; title: string; subtitle: string; primaryCta: Cta; secondaryCta: Cta };
-  about: { eyebrow: string; title: string };
-  name: { eyebrow: string; title: string; items: { heading: string; icon: string; body: string }[]; footnote: string };
-  vision: { title: string; body: string };
-  mission: { title: string; body: string; pointsTitle: string; points: string[] };
-  offerings: {
-    eyebrow: string; title: string;
-    products: { name: string; logo: string; body: string; href: string; cta: string }[];
-    services: { name: string; icon: string; body: string; href: string }[];
+  hero: { titleAccent: string; title: string; lede: string; primaryCta: Cta; secondaryCta: Cta; reassure: string; reassureAccent: string };
+  player: { title: string; subtitle: string; badge: string; chapters: string[]; slides: { chapter: string; title: string; sub: string; image: string }[] };
+  customers: { title: string; logos: { name: string; logo: string; height?: number; background?: string }[] };
+  whatWeDo: {
+    eyebrow: string; title: string; intro: string;
+    journey: { step: string; title: string; body: string; cta: string; href: string; product?: boolean }[];
+    bands: { title: string; body: string; cta: string; href: string }[];
   };
-  cta: { title: string; body: string; primary: Cta; secondary: Cta };
+  servicesDetail: { eyebrow: string; title: string; intro: string; services: { label: string; file: string; href: string }[]; fullPageLabel: string };
+  product: { eyebrow: string; title: string; body: string; ticks: string[]; cta: Cta; image: string; imageAlt: string };
+  whoWeServe: { eyebrow: string; title: string; items: { title: string; tagline: string; body: string }[] };
+  vision: { eyebrow: string; quote: string; sub: string; cta: Cta };
+  trust: { eyebrow: string; title: string; items: { title: string; body: string }[] };
 };
 
 export default function HomePage() {
-  const { data: d, html } = getPage<Home>("home");
+  const { data: d } = getPage<Home>("home");
+  const site = getSite();
+  const services = d.servicesDetail.services.map((s) => ({
+    label: s.label, href: s.href,
+    items: getPage<{ detail: { items: AccItem[] } }>(s.file).data.detail.items,
+  }));
+
   return (
     <>
-      <PageHero size="lg" serif {...d.hero} />
-
-      <section className="container-site grid gap-10 py-20 sm:py-24 lg:grid-cols-[1fr_1.3fr]">
-        <SectionHeading eyebrow={d.about.eyebrow} title={d.about.title} />
-        <Prose html={html} />
-      </section>
-
-      <section className="bg-paper py-20 sm:py-24">
-        <div className="container-site">
-          <SectionHeading eyebrow={d.name.eyebrow} title={d.name.title} />
-          <div className="mt-12 grid gap-5 md:grid-cols-2">
-            {d.name.items.map((it) => (
-              <div key={it.heading} className="rounded-2xl border border-ink-100 bg-white p-8">
-                <div className="flex items-baseline gap-3">
-                  <h3 className="font-serif text-4xl font-normal tracking-normal text-ink-800">{it.heading}</h3>
-                  <Icon name={it.icon} className="h-5 w-5 text-ink-300" />
-                </div>
-                <p className="mt-4 leading-relaxed text-ink-600">{it.body}</p>
-              </div>
-            ))}
-          </div>
-          {d.name.footnote && <p className="mt-8 max-w-3xl text-ink-600">{d.name.footnote}</p>}
+      <section className="hero"><div className="wrap">
+        <h1><span className="grad">{d.hero.titleAccent}</span>{d.hero.title}</h1>
+        <p className="lede">{d.hero.lede}</p>
+        <div className="ctas">
+          <Link className="btn btn-solid" href={d.hero.primaryCta.href}>{d.hero.primaryCta.label}</Link>
+          <Link className="btn btn-outline" href={d.hero.secondaryCta.href}>{d.hero.secondaryCta.label}</Link>
         </div>
-      </section>
+        <p className="reassure">{d.hero.reassure}<i aria-hidden="true" /><span>{d.hero.reassureAccent}</span></p>
+        <TourPlayer {...d.player} logo={site.caliperLogo.fileDark} />
+      </div></section>
 
-      <section className="container-site grid gap-6 py-20 sm:py-24">
-        <div className="rounded-2xl bg-ink-800 p-8 sm:p-10">
-          <p className="eyebrow text-mint-300">{d.vision.title}</p>
-          <p className="mt-4 max-w-4xl font-display text-2xl font-semibold leading-snug text-white sm:text-3xl">{d.vision.body}</p>
-        </div>
-        <div className="rounded-2xl border border-ink-100 p-8 sm:p-10">
-          <p className="eyebrow">{d.mission.title}</p>
-          <p className="mt-4 max-w-4xl text-lg leading-relaxed text-ink-700">{d.mission.body}</p>
-          <p className="mt-6 text-sm font-semibold text-ink-800">{d.mission.pointsTitle}</p>
-          <ul className="mt-3 grid gap-x-10 gap-y-2.5 lg:grid-cols-2">
-            {d.mission.points.map((p) => (
-              <li key={p} className="flex gap-3 text-ink-600">
-                <Check className="mt-1 h-4 w-4 shrink-0 text-mint-700" aria-hidden="true" />{p}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      <section className="bg-paper py-20 sm:py-24">
-        <div className="container-site">
-          <SectionHeading eyebrow={d.offerings.eyebrow} title={d.offerings.title} />
-          <div className="mt-12 grid gap-5 lg:grid-cols-[1.4fr_1fr]">
-            {d.offerings.products.map((p) => (
-              <SmartLink key={p.name} href={p.href} className="group flex flex-col rounded-2xl border border-ink-100 bg-white p-8 hover:border-mint-300 hover:shadow-md">
-                <p className="eyebrow">Product</p>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={p.logo} alt={p.name} className="mt-5 h-10 w-auto self-start" />
-                <p className="mt-5 text-lg leading-relaxed text-ink-600">{p.body}</p>
-                <p className="mt-auto pt-6 text-sm font-semibold text-mint-700">{p.cta} →</p>
-              </SmartLink>
-            ))}
-            <div className="grid gap-5">
-              {d.offerings.services.map((s) => (
-                <FeatureCard key={s.name} feature={{ title: s.name, icon: s.icon, body: s.body, href: s.href, cta: "Learn more" }} />
-              ))}
+      <div className="logos" id="home-customers"><div className="wrap">
+        <p>{d.customers.title}</p>
+        <div className="logo-row">
+          {d.customers.logos.map((l) => (
+            <div key={l.name} className={`logo-tile${l.background ? "" : " lt-white"}`} style={l.background ? { background: l.background } : undefined}>
+              <img src={l.logo} alt={l.name} style={l.height ? { height: l.height } : undefined} />
             </div>
+          ))}
+        </div>
+      </div></div>
+
+      <section className="block"><div className="wrap">
+        <Head eyebrow={d.whatWeDo.eyebrow} title={d.whatWeDo.title} intro={d.whatWeDo.intro} />
+        <div className="journey">
+          {d.whatWeDo.journey.map((j, k) => (
+            <div key={j.step} className="q" style={{ gridColumn: k + 1 }}><i>{k + 1}</i>{j.step}</div>
+          ))}
+          {d.whatWeDo.journey.map((j) => (
+            <Link key={j.href} className={`card${j.product ? " product" : ""}`} href={j.href}>
+              <h3>
+                {j.product && <><img className="card-logo" src={site.caliperLogo.fileDark} alt="" /><span className="sr">Caliper</span> </>}
+                {j.title}
+              </h3>
+              <p>{j.body}</p><span className="go">{j.cta}</span>
+            </Link>
+          ))}
+        </div>
+        {d.whatWeDo.bands.map((b) => (
+          <div key={b.title} className="band"><b>{b.title}</b><span>{b.body}</span><Link href={b.href}>{b.cta}</Link></div>
+        ))}
+      </div></section>
+
+      <section className="block alt" id="home-services"><div className="wrap">
+        <Head eyebrow={d.servicesDetail.eyebrow} title={d.servicesDetail.title} intro={d.servicesDetail.intro} />
+        <ServiceTabs services={services} fullPageLabel={d.servicesDetail.fullPageLabel} />
+      </div></section>
+
+      <section className="block"><div className="wrap split">
+        <div className="lead">
+          <div className="eyebrow">{d.product.eyebrow}</div>
+          <BrandLogo logo={site.caliperLogo} className="sec-logo" />
+          <h2>{d.product.title}</h2>
+          <p>{d.product.body}</p>
+          <Ticks items={d.product.ticks} />
+          <div style={{ marginTop: 28, display: "flex", gap: 12, flexWrap: "wrap" }}>
+            <Link className="btn btn-solid" href={d.product.cta.href}>{d.product.cta.label}</Link>
           </div>
         </div>
-      </section>
+        <div className="shot"><img src={d.product.image} alt={d.product.imageAlt} loading="lazy" /></div>
+      </div></section>
 
-      <CTABanner {...d.cta} />
+      <section className="block alt" id="home-who"><div className="wrap">
+        <Head eyebrow={d.whoWeServe.eyebrow} title={d.whoWeServe.title} />
+        <Cards items={d.whoWeServe.items} cols={4} />
+      </div></section>
+
+      <section className="block vision-band" id="home-vision"><div className="wrap">
+        <div className="eyebrow">{d.vision.eyebrow}</div>
+        <p className="vb-quote">{d.vision.quote}</p>
+        <p className="vb-sub">{d.vision.sub}</p>
+        <Link className="btn btn-outline" href={d.vision.cta.href}>{d.vision.cta.label}</Link>
+      </div></section>
+
+      <section className="block alt"><div className="wrap">
+        <Head eyebrow={d.trust.eyebrow} title={d.trust.title} />
+        <Cards items={d.trust.items} cols={4} />
+      </div></section>
+
+      <CtaBand />
     </>
   );
 }

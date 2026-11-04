@@ -1,31 +1,49 @@
-import PageHero from "./PageHero";
-import FeatureCard, { type Feature } from "./FeatureCard";
-import CTABanner from "./CTABanner";
-import ComingSoon from "./ComingSoon";
-import Prose from "./Prose";
 import { getPage } from "@/lib/content";
+import { Cards, Head, Hero, Steps, Ticks } from "./Blocks";
+import Accordion, { type AccItem } from "./Accordion";
+import CtaBand from "./CtaBand";
 
-type Cta = { label: string; href: string; external?: boolean };
-type ServiceData = { eyebrow: string; title: string; intro?: string; comingSoon?: boolean; offerings: Feature[]; cta: { title: string; body?: string; primary: Cta } };
+type Cta = { label: string; href: string };
+export type ServiceData = {
+  hero: { crumb: string; titleAccent: string; title: string; lede: string; primaryCta: Cta; secondaryCta: Cta; glance: { label: string; value: string }[] };
+  what: { eyebrow: string; title: string; ticks?: string[]; panel?: { title: string; body: string }; cards?: { title: string; body: string }[]; note?: string };
+  howItWorks: { eyebrow: string; title: string; steps: { title: string; body: string }[]; outcomeLead: string; outcomeStrong: string };
+  detail: { anchor: string; eyebrow: string; title: string; intro: string; items: AccItem[] };
+};
 
-/** Shared template for /services/business-plan and /services/consulting, driven by content/services/<slug>.md */
-export default function ServicePage({ slug }: { slug: string }) {
-  const { data, html } = getPage<ServiceData>(`services/${slug}`);
-  const strippedHtml = html.replace(/<!--[\s\S]*?-->/g, "").trim();
+/** Shared layout for the four service pages. Content in content/services/<slug>.md. */
+export default function ServicePage({ file }: { file: string }) {
+  const { data: d } = getPage<ServiceData>(file);
+  const w = d.what;
   return (
     <>
-      <PageHero eyebrow={data.eyebrow} title={data.title} subtitle={data.intro} />
-      {data.comingSoon ? <ComingSoon /> : (
-        <>
-          {strippedHtml && <section className="container-site max-w-3xl py-16"><Prose html={strippedHtml} /></section>}
-          {data.offerings?.length > 0 && (
-            <section className="container-site grid gap-5 pb-16 sm:grid-cols-2 lg:grid-cols-3">
-              {data.offerings.map((o) => <FeatureCard key={o.title} feature={o} />)}
-            </section>
-          )}
-        </>
+      <Hero {...d.hero} />
+
+      {w.ticks ? (
+        <section className="block"><div className="wrap split">
+          <div className="lead"><div className="eyebrow">{w.eyebrow}</div><h2>{w.title}</h2><Ticks items={w.ticks} /></div>
+          {w.panel && <div className="panel"><h3>{w.panel.title}</h3><p>{w.panel.body}</p></div>}
+        </div></section>
+      ) : (
+        <section className="block"><div className="wrap">
+          <Head eyebrow={w.eyebrow} title={w.title} />
+          {w.cards && <Cards items={w.cards} cols={w.cards.length === 3 ? 3 : 2} />}
+          {w.note && <p className="small">{w.note}</p>}
+        </div></section>
       )}
-      <CTABanner title={data.cta.title} body={data.cta.body} primary={data.cta.primary} />
+
+      <section className="block alt"><div className="wrap">
+        <Head eyebrow={d.howItWorks.eyebrow} title={d.howItWorks.title} />
+        <Steps steps={d.howItWorks.steps} />
+        <p className="outcome">{d.howItWorks.outcomeLead} <strong>{d.howItWorks.outcomeStrong}</strong></p>
+      </div></section>
+
+      <section className="block" id={d.detail.anchor}><div className="wrap">
+        <Head eyebrow={d.detail.eyebrow} title={d.detail.title} intro={d.detail.intro} />
+        <Accordion items={d.detail.items} />
+      </div></section>
+
+      <CtaBand />
     </>
   );
 }

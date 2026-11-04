@@ -1,33 +1,133 @@
 ---
-# BUSINESS PLAN AS A SERVICE PAGE (/services/business-plan)
-# ⚠ DUMMY CONTENT for layout preview. Replace every entry marked DUMMY before going live.
-seoTitle: "Business Plan as a Service (BPaaS) | Contelligent"
-seoDescription: "An annual business plan for your April to March year, tracked every month against actuals from Tally and revised each quarter."   # DUMMY
-eyebrow: "Services"
-title: "Business Plan as a Service (BPaaS)"
-intro: "A business plan that doesn't go into a drawer. We build it with you, check it against your Tally actuals every month, and revise it every quarter."   # DUMMY
-comingSoon: false
+# ─────────────────────────────────────────────────────────────
+# SERVICE PAGE (/services/business-plan/)
+# Source: contelligent-website 1.html (Nov 2026).
+# Sections in order: hero, what (split or cards), how it works (steps), in detail (drill-down list).
+# The "In detail" list also appears in the "Services in detail" tabs on the home page.
+# In `detail.items`: `open: true` starts that row open; `columns` are the two boxes inside a row;
+# `questions` shows a grid of questions; `body` is a paragraph; `note` is a grey line underneath.
+# ─────────────────────────────────────────────────────────────
+seoTitle: "Business Plan as a Service | Contelligent"
+seoDescription: "We build your plan, budget and projections with you, then keep them current as your actuals come in."
 
-offerings:   # DUMMY: all six
-  - { title: "Annual business plan", icon: "target", body: "Revenue, cost and profit targets for your April to March year, built with you from last year's Tally data and this year's plans." }
-  - { title: "Month-wise budget", icon: "ruler", body: "The plan split by month and by ledger group, using the same structure as your Tally books, so actuals compare without manual mapping." }
-  - { title: "Monthly plan vs actuals review", icon: "line-chart", body: "Every month we sit with you, compare actuals with the plan and trace each large variance to the ledgers and transactions behind it." }
-  - { title: "Quarterly reforecast", icon: "refresh", body: "Each quarter, the remaining months are revised based on what has actually happened, so the plan stays useful through March." }
-  - { title: "Cash flow plan", icon: "wallet", body: "The plan turned into a month-wise view of receipts and payments, including GST, salaries and loan repayments." }
-  - { title: "Tracked in Caliper", icon: "dashboard", body: "Your plan is loaded into Caliper's Planned vs Actuals view (coming soon), so you can check progress any day, not only at the monthly review." }
+hero:
+  crumb: "Services"
+  titleAccent: "Business Plan as a Service"      # first line, in the green gradient
+  title: "A living plan, built on your real numbers"
+  lede: "We build your plan, budget and projections with you, then keep them current as your actuals come in."
+  primaryCta: { label: "Plan with us", href: "/contact/" }
+  secondaryCta: { label: "See what’s included", href: "#bp-detail" }
+  glance:
+    - { label: "You get", value: "Plan, budget and projections" }
+    - { label: "Built on", value: "Your real numbers from Caliper" }
+    - { label: "Kept current", value: "Plan vs actual reviews" }
+    - { label: "Outcome", value: "A plan you can run the business on" }
 
-cta:
-  title: "Planning for next year?"
-  body: "Tell us about your business and your targets. We'll suggest how to build the plan and how often to review it."   # DUMMY
-  primary: { label: "Contact us", href: "/contact/" }
+what:
+  eyebrow: "What you get"
+  title: "A plan you can run the business on"
+  cards:
+    - { title: "Business plan and budget", body: "An annual plan and budget shaped with your leadership team, grounded in your historical data from Caliper." }
+    - { title: "Financial projections", body: "Forward views of revenue, costs, cash and profitability that show where the business is heading." }
+    - { title: "Scenario planning", body: "What-if views on growth, pricing and costs, so you can compare options before committing." }
+    - { title: "Plan vs actual reviews", body: "Regular reviews of performance against plan, with the plan updated as the business changes." }
+
+howItWorks:
+  eyebrow: "How it works"
+  title: "Plan, track, update"
+  steps:
+    - { title: "Understand", body: "Your goals, business model and the story in your numbers." }
+    - { title: "Build", body: "The plan, budget and projections." }
+    - { title: "Track", body: "Actuals against plan, using Caliper data." }
+    - { title: "Update", body: "Re-plan as conditions change." }
+  outcomeLead: "Useful when you are"
+  outcomeStrong: "planning growth, raising funds or approaching lenders."      # shown in green
+
+detail:
+  anchor: "bp-detail"
+  eyebrow: "In detail"
+  title: "What Business Plan as a Service includes"
+  intro: "Open any area to see how the plan is built, what you receive and how it stays current."
+  items:
+    - title: "What goes into your plan"
+      summary: "A complete plan, built month by month."
+      open: true
+      columns:
+        - heading: "Plan components"
+          points:
+            - "Business goals and the key assumptions behind them"
+            - "Revenue plan by customer, product or revenue stream"
+            - "Cost plan by cost centre, including headcount where relevant"
+            - "Cash flow projection and funding needs"
+        - heading: "Built on your actuals"
+          points:
+            - "Historical trends and seasonality from Caliper"
+            - "Customer concentration and collection patterns"
+            - "Cost structure and margins by business line"
+    - title: "Scenario planning"
+      summary: "Compare options before committing."
+      columns:
+        - heading: "Scenarios"
+          points:
+            - "Base case, upside and downside views"
+            - "Side-by-side comparison of key outcomes"
+            - "Clear notes on what changes between scenarios"
+        - heading: "Levers you can test"
+          points:
+            - "Pricing and volume changes"
+            - "Hiring plans and new cost commitments"
+            - "Collection days and payment terms"
+            - "New products, markets or customers"
+    - title: "Plan vs actual reviews"
+      summary: "Know early when you are drifting from plan."
+      columns:
+        - heading: "Review cadence"
+          points:
+            - "Regular variance reviews, at a frequency agreed with you"
+            - "Explanations for material variances, not just the numbers"
+            - "Agreed actions when the business is off plan"
+        - heading: "In Caliper"
+          points:
+            - "Actuals come straight from your accounting data"
+            - "Planned vs Actuals in Caliper is coming soon and will show variances alongside your live numbers"
+            - "Until then, variances are shared as review packs"
+    - title: "Re-forecasting as things change"
+      summary: "A plan that stays useful through the year."
+      columns:
+        - heading: "When we update"
+          points:
+            - "After major wins, losses or market changes"
+            - "When assumptions prove wrong"
+            - "Ahead of board or investor meetings"
+        - heading: "How"
+          points:
+            - "Rolling forecast for the months ahead"
+            - "Assumptions log, so changes are traceable"
+            - "Updated cash and funding view"
+    - title: "What you receive"
+      summary: "Practical outputs you can use straight away."
+      columns:
+        - heading: "Documents"
+          points:
+            - "Business plan narrative"
+            - "Monthly budget and projections"
+            - "Summary pack for board, investors or lenders"
+        - heading: "Working files"
+          points:
+            - "Planning model your team can follow"
+            - "Assumptions and scenario sheets"
+            - "Variance review packs"
+    - title: "When it is most useful"
+      summary: "Moments where a clear plan pays off."
+      columns:
+        - heading: "Planning"
+          points:
+            - "Annual budgeting"
+            - "Expansion into new products or markets"
+            - "Hiring and capacity decisions"
+        - heading: "Funding"
+          points:
+            - "Raising equity"
+            - "Applying for bank loans or credit lines"
+            - "Investor and lender reporting"
 ---
-
-## How it works
-
-<!-- DUMMY: replace with real copy -->
-
-We start before the financial year begins. Over two or three sessions, we agree targets with you and your team and build the plan from last year's actuals in Tally.
-
-After that it runs on a monthly cycle. Once the books for a month are closed, we compare actuals with the plan, explain what moved and agree what to do about it. Every quarter, we revise the months that remain.
-
-By March you have a plan that was checked twelve times, and a clear starting point for next year's.
