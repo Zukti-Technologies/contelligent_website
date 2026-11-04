@@ -82,8 +82,9 @@ leadership:
       initials: "VK"
       role: "Co-founder"
       bio:
-        - "A software engineer with over 15 years of industry experience, working with large corporates and on the latest technology stacks."
-      tags: ["Software engineering", "Enterprise technology", "Modern technology stacks"]
+        - "A technologist with over 15 years in IT. Vishal started as a business analyst, moved into data analysis and business analytics advisory, and most recently worked as an Associate Principal Data Scientist."
+        - "At Contelligent he leads technology for Caliper, from product specs and data models to code reviews and releases, and runs the development team."
+      tags: ["Data science", "Business analytics", "Data modelling", "Product engineering"]
   backingStrong: "Backed by a leading software company"
   backingRest: "for investment and strategic support."
 ---
