@@ -65,8 +65,8 @@ whatWeDo:
     - { step: "Know what it means", title: "platform", product: true, body: "Connects to your accounting software and turns your books into always-current dashboards.", cta: "Explore Caliper", href: "/products/caliper/" }
     - { step: "Know what to do next", title: "Advisory", body: "Experts who interpret the numbers and recommend actions.", cta: "Learn more", href: "/services/advisory/" }
   bands:
-    - { title: "Business Plan as a Service", body: "A plan, budget and projections built on your real numbers.", cta: "See business planning", href: "/services/business-plan/" }
-    - { title: "Customisation services", body: "Dashboards, reports and data connections tailored to your business.", cta: "See customisation", href: "/services/customisation/" }
+    - { title: "Business Plan as a Service", body: "A plan, budget and projections built on your real numbers.", cta: "Learn more", href: "/services/business-plan/" }
+    - { title: "Customisation services", body: "Dashboards, reports and data connections tailored to your business.", cta: "Learn more", href: "/services/customisation/" }
 
 servicesDetail:
   eyebrow: "Services in detail"
@@ -78,7 +78,7 @@ servicesDetail:
     - { label: "Business Plan as a Service", file: "services/business-plan", href: "/services/business-plan/" }
     - { label: "Advisory", file: "services/advisory", href: "/services/advisory/" }
     - { label: "Customisation services", file: "services/customisation", href: "/services/customisation/" }
-  fullPageLabel: "Open the full {service} page"
+  fullPageLabel: "Read more about {service} Service"
 
 product:
   eyebrow: "Our product"
