@@ -59,7 +59,7 @@ detail:
         - heading: "What happens"
           points:
             - "A walkthrough of your books, chart of accounts and current reports"
-            - "Ledgers and groups mapped to the structure Caliper analyses"
+            - "Ledgers and groups mapped to Caliper’s reporting structure"
             - "Naming conventions agreed for customers, vendors, cost centres and revenue streams"
             - "A review of earlier periods, as far back as you need comparisons"
         - heading: "What you receive"

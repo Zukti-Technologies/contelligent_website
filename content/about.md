@@ -75,15 +75,13 @@ leadership:
       initials: "PK"
       role: "Co-founder"
       bio:
-        - "A Chartered Accountant with over 15 years of practice experience. After qualifying in 2011 and spending a year with a reputed firm, Pradeep founded his own practice, Rao and Pradeep."
-        - "He specialises in internal controls and audit, and has set up accounting processes for many SME clients that have since grown into large businesses."
+        - "With over 15 years of experience as a Chartered Accountant, Pradeep has specialised in bookkeeping, compliance, financial reporting and business advisory. His professional journey revealed a persistent challenge: businesses struggled with timely, accurate reporting due to manual processes and stressful financial closures, limiting opportunities for meaningful advisory. Driven to bridge this gap, he began leveraging Excel and Power BI to simplify reporting and deliver actionable insights. This vision evolved into **Contelligent Technologies** and its flagship product, **Caliper**, empowering businesses with financial intelligence and enabling finance professionals to transition from traditional reporting to strategic advisory."
       tags: ["Chartered Accountant", "Internal controls", "Audit", "SME accounting processes"]
     - name: "Vishal Katti"
       initials: "VK"
       role: "Co-founder"
       bio:
-        - "A technologist with over 15 years in IT. Vishal started as a business analyst, moved into data analysis and business analytics advisory, and most recently worked as an Associate Principal Data Scientist."
-        - "At Contelligent he leads technology for Caliper, from product specs and data models to code reviews and releases, and runs the development team."
+        - "A technologist with over 15 years in IT, Vishal started as a business analyst, moved into data analysis and business analytics advisory, and most recently worked as an Associate Principal Data Scientist. That path, from asking the business questions to building the models that answer them, shaped how he builds products. His mission is to use technology to bring more efficiency and overall growth to businesses. That mission became **Contelligent Technologies**, where he leads technology for **Caliper**, from product specs and data models to code reviews and releases, and runs the development team."
       tags: ["Data science", "Business analytics", "Data modelling", "Product engineering"]
   backingStrong: "Backed by a leading software company"
   backingRest: "for investment and strategic support."

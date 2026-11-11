@@ -7,6 +7,11 @@ import CtaBand from "@/components/CtaBand";
 
 export const metadata = metaFrom("about", "/about/");
 
+// Renders **bold** markers in content strings as <strong>.
+function inlineBold(text: string) {
+  return text.split(/\*\*(.+?)\*\*/g).map((part, i) => (i % 2 ? <strong key={i}>{part}</strong> : part));
+}
+
 type Block = { label: string; title: string; body: string };
 type About = {
   hero: { crumb: string; titleAccent: string; title: string; lede: string; glance: { label: string; value: string }[] };
@@ -81,7 +86,7 @@ export default function AboutPage() {
                 <span className="f-av" aria-hidden="true">{p.initials}</span>
                 <div><h3>{p.name}</h3><span className="f-role">{p.role}</span></div>
               </div>
-              {p.bio.map((b) => <p key={b}>{b}</p>)}
+              {p.bio.map((b) => <p key={b}>{inlineBold(b)}</p>)}
               <div className="f-tags">{p.tags.map((t) => <span key={t}>{t}</span>)}</div>
             </article>
           ))}
