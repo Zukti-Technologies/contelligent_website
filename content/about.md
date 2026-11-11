@@ -55,7 +55,7 @@ story:
   # {headquarters} is replaced with the city in content/site.md.
   glance:
     - "Founded in 2026"
-    - "Founded by a Chartered Accountant and a software engineer, each with 15+ years of experience"
+    - "Founded by a Chartered Accountant and a Software Engineer, each with 15+ years of experience"
     - "Backed by a leading software company for investment and strategic support"
     - "Headquartered in {headquarters}"
   stakeholdersTitle: "What changes for each stakeholder"
@@ -69,7 +69,7 @@ story:
 leadership:
   eyebrow: "Leadership"
   title: "Finance expertise meets technology."
-  intro: "Contelligent was founded in 2026 by a Chartered Accountant and a software engineer, each with more than 15 years of experience."
+  intro: "Contelligent was founded in 2026 by a Chartered Accountant and a Software Engineer, each with more than 15 years of experience."
   people:
     - name: "Pradeep Kumar R"
       initials: "PK"
